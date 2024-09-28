@@ -1,13 +1,37 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import Home from './Home';
+import Home from './Home.js';
+import RecoverPassword from './RecoverPassword.js';
+import InicioSesion from "./InicioSesion.js"
 import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import {
+  createBrowserRouter,
+  RouterProvider,
+} from "react-router-dom";
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Home/>,
+  },
+  {
+    path: "/inicio_sesion",
+    element: <InicioSesion/>,
+  },
+  {
+    path: "/recover_password",
+    element: <RecoverPassword/>,
+  },
+]);
+
+
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <Home />
+    <RouterProvider router={router} />
   </React.StrictMode>
 );
 
