@@ -4,6 +4,7 @@ import './index.css';
 import Home from './Home.js';
 import RecoverPassword from './RecoverPassword.js';
 import InicioSesion from "./InicioSesion.js"
+import Registration from './Registration.js';
 import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {
@@ -23,6 +24,10 @@ const router = createBrowserRouter([
   {
     path: "/recover_password",
     element: <RecoverPassword/>,
+  },
+  {
+    path: "/sing_in",
+    element: <Registration/>,
   },
 ]);
 

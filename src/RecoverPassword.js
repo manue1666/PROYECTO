@@ -11,10 +11,10 @@ const RecoverPassword = () => {
 
     <><Navbar bg="dark" variant="dark">
           <Container>
-              <Navbar.Brand >Cuestionarios</Navbar.Brand>
+              <Navbar.Brand href="/">Cuestionarios</Navbar.Brand>
               <Nav className="me-auto">
-                  <Nav.Link href="/">Home</Nav.Link>
                   <Nav.Link href="/inicio_sesion">Login</Nav.Link>
+                  <Nav.Link href="/sing_in">regist</Nav.Link>
               </Nav>
           </Container>
       </Navbar>
