@@ -8,7 +8,7 @@ const InicioSesion = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (email === "pin@example.com" && password === "password") {
+    if (email === "abs@example.com" && password === "password") {
       console.log("Inicio de sesión exitoso");
     } else {
       console.error("Error: Credenciales incorrectas");
