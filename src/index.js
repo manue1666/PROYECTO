@@ -11,6 +11,7 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
+import CreateQ from './CreateQ.js';
 
 const router = createBrowserRouter([
   {
@@ -28,6 +29,10 @@ const router = createBrowserRouter([
   {
     path: "/sing_in",
     element: <Registration/>,
+  },
+  {
+    path: "/createq",
+    element: <CreateQ/>,
   },
 ]);
 

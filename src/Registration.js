@@ -2,7 +2,6 @@ import { useState } from "react";
 import { Button, Card, Container, Form,Nav,Navbar } from "react-bootstrap";
 
 const Registration= ()=>{
-  const title="bienbenidos a las bases de react"
 
   const [data,setData] = useState({});
 
@@ -30,7 +29,7 @@ const Registration= ()=>{
                 <Navbar.Brand href="/">Cuestionarios</Navbar.Brand>
                 <Nav className="me-auto">
                     <Nav.Link href="/inicio_sesion">Login</Nav.Link>
-                    <Nav.Link href="/sing_in">regist</Nav.Link>
+                    <Nav.Link href="/sing_in">Register</Nav.Link>
                 </Nav>
             </Container>
         </Navbar><Container className="mt-3">
@@ -44,18 +43,18 @@ const Registration= ()=>{
                                 <Form.Control placeholder="ingresa tu correo" type="email" name="email" onChange={onChangeRegister}></Form.Control>
                             </Form.Group>
                             <Form.Group className="mb-3">
-                                <Form.Label>nombre</Form.Label>
+                                <Form.Label>Nombre</Form.Label>
                                 <Form.Control placeholder="ingresa nombre" name="nombre" onChange={onChangeRegister}></Form.Control>
                             </Form.Group>
                             <Form.Group className="mb-3">
-                                <Form.Label>apellidos</Form.Label>
+                                <Form.Label>Apellidos</Form.Label>
                                 <Form.Control placeholder="ingresa apellidos" name="apellido" onChange={onChangeRegister}></Form.Control>
                             </Form.Group>
                             <Form.Group>
-                                <Form.Label>contraseña</Form.Label>
+                                <Form.Label>Contraseña</Form.Label>
                                 <Form.Control placeholder="ingresa contraseña" type="password" name="password" onChange={onChangeRegister}></Form.Control>
                             </Form.Group>
-                            <Button onClick={() => onSubmit()} className="mt-3" variant="primary" type="submit">registrate</Button>
+                            <Button onClick={() => onSubmit()} className="mt-3" variant="primary" type="submit">Registrate</Button>
                         </Form>
 
 
