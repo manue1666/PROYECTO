@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Card, Container, Form, Button } from 'react-bootstrap';
-import { AnswerQuestionnarie } from "./components/AnwerQuestionnarie"; // Asegúrate de importar el componente
+import { AnswerQuestionnarie } from "./components/AnwerQuestionnarie";
 
 const CreateQ = () => {
   const [cuestionarios, setCuestionarios] = useState({
