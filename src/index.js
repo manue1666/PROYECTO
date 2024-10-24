@@ -12,6 +12,7 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import CreateQ from './CreateQ.js';
+import { AnswerQuestionnarie } from './components/AnwerQuestionnarie.js';
 
 const router = createBrowserRouter([
   {
@@ -33,6 +34,10 @@ const router = createBrowserRouter([
   {
     path: "/createq",
     element: <CreateQ/>,
+  },
+  {
+    path: "/AnswerQuestionnarie",
+    element: <AnswerQuestionnarie/>,
   },
 ]);
 
