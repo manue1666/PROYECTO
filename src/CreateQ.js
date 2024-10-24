@@ -151,7 +151,7 @@ const CreateQ = () => {
                     value={opcion}
                     onChange={(e) => handleOptionChange(qIndex, oIndex, e)}
                   />
-                  <Button variant="danger" className="ms-2" onClick={() => removeOption(qIndex, oIndex)}>Eliminar</Button>
+                  <Button variant="danger" className="mt-2" onClick={() => removeOption(qIndex, oIndex)}>Eliminar</Button>
                 </div>
               ))}
               <Button className="mt-2" onClick={() => addOption(qIndex)}>Agregar Opción</Button>
@@ -165,7 +165,7 @@ const CreateQ = () => {
               checked={pregunta.obligatoria}
               onChange={(e) => handleObligatoriaChange(qIndex, e)}
             />
-            <Button variant="danger" className="mt-2" onClick={() => removeQuestion(qIndex)}>Eliminar Pregunta</Button>
+            <Button variant="danger" className="mt-4" onClick={() => removeQuestion(qIndex)}>Eliminar Pregunta</Button>
           </Card.Body>
         </Card>
       ))}
