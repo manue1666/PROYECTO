@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Card, Container, Form, Button } from 'react-bootstrap';
 import { AnswerQuestionnarie } from "./components/AnwerQuestionnarie";
-import { AnswerQuestionnarie } from "./components/AnwerQuestionnarie";
+
 
 const CreateQ = () => {
 
@@ -53,7 +53,7 @@ const CreateQ = () => {
 
 
                   />
-                  <Button variant="danger" className="mt-2" onClick={() => removeOption(qIndex, oIndex)}>Eliminar</Button>
+                  <Button variant="danger" className="mt-2" >Eliminar</Button>
                   <Button variant="danger" className="ms-2" >Eliminar</Button>
                 </div>
 
@@ -67,7 +67,7 @@ const CreateQ = () => {
               label="Pregunta Obligatoria"
 
             />
-            <Button variant="danger" className="mt-4" onClick={() => removeQuestion(qIndex)}>Eliminar Pregunta</Button>
+            <Button variant="danger" className="mt-4" >Eliminar Pregunta</Button>
             <Button variant="danger" className="mt-2" >Eliminar Pregunta</Button>
           </Card.Body>
         </Card>
