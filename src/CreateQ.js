@@ -5,7 +5,6 @@ import { AnswerQuestionnarie } from "./components/AnwerQuestionnarie";
 
 const CreateQ = () => {
 
-
   return (
     <Container>
       <Card className="mt-4">
@@ -54,7 +53,7 @@ const CreateQ = () => {
 
                   />
                   <Button variant="danger" className="mt-2" >Eliminar</Button>
-                  <Button variant="danger" className="ms-2" >Eliminar</Button>
+
                 </div>
 
               <Button >Agregar Opción</Button>
@@ -67,7 +66,7 @@ const CreateQ = () => {
               label="Pregunta Obligatoria"
 
             />
-            <Button variant="danger" className="mt-4" >Eliminar Pregunta</Button>
+
             <Button variant="danger" className="mt-2" >Eliminar Pregunta</Button>
           </Card.Body>
         </Card>

@@ -10,6 +10,7 @@ return (
         <Nav className="me-auto">
             <Nav.Link href="/inicio_sesion">Login</Nav.Link>
             <Nav.Link href="/sing_in">regist</Nav.Link>
+            <Nav.Link href='/createq'>crear cuestionario</Nav.Link>
         </Nav>
         </Container>
     </Navbar>
