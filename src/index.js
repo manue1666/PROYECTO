@@ -12,7 +12,8 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import CreateQ from './CreateQ.js';
-import { AnswerQuestionnarie } from './components/AnwerQuestionnarie.js';
+import { AnswerQuestionnaire } from './components/AnwerQuestionnaire.js';
+import "bootstrap-icons/font/bootstrap-icons.css"
 
 const router = createBrowserRouter([
   {
@@ -36,8 +37,8 @@ const router = createBrowserRouter([
     element: <CreateQ/>,
   },
   {
-    path: "/AnswerQuestionnarie",
-    element: <AnswerQuestionnarie/>,
+    path: "/AnswerQuestionnaire",
+    element: <AnswerQuestionnaire/>,
   },
 ]);
 

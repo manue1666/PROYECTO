@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Button, Card, Container, Form,Nav,Navbar } from "react-bootstrap";
+import { Barra } from "./Navbar";
 
 const Registration= ()=>{
 
@@ -24,18 +25,12 @@ const Registration= ()=>{
 
     return (
 
-        <><Navbar bg="dark" variant="dark">
-            <Container>
-                <Navbar.Brand href="/">Cuestionarios</Navbar.Brand>
-                <Nav className="me-auto">
-                    <Nav.Link href="/inicio_sesion">Login</Nav.Link>
-                    <Nav.Link href="/sing_in">Register</Nav.Link>
-                </Nav>
-            </Container>
-        </Navbar><Container className="mt-3">
+        <>
+        <Barra/>
+        <Container className="mt-3">
                 <Card className="mb-3">
                     <Card.Body>
-                        <Card.Title>Inicia sesion
+                        <Card.Title><i class="bi bi-person-plus"></i> Registrate
                         </Card.Title>
                         <Form>
                             <Form.Group className="mb-3">
@@ -55,7 +50,9 @@ const Registration= ()=>{
                                 <Form.Control placeholder="ingresa contraseña" type="password" name="password" onChange={onChangeRegister}></Form.Control>
                             </Form.Group>
                             <Button onClick={() => onSubmit()} className="mt-3" variant="primary" type="submit">Registrate</Button>
+                            
                         </Form>
+
 
 
 

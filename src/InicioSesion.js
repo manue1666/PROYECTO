@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Button, Form, Container, Card, Navbar, Nav } from "react-bootstrap";
+import { Barra } from "./Navbar";
 
 const InicioSesion = () => {
   const [email, setEmail] = useState("");
@@ -17,19 +18,12 @@ const InicioSesion = () => {
 
   return (
     <>
-      <Navbar bg="dark" variant="dark">
-        <Container>
-          <Navbar.Brand href="/">Cuestionarios</Navbar.Brand>
-          <Nav className="me-auto">
-            <Nav.Link href="/inicio_sesion">Login</Nav.Link>
-            <Nav.Link href="/sing_in">regist</Nav.Link>
-          </Nav>
-        </Container>
-      </Navbar>
+
+      <Barra/>
       <Container className="mt-4">
         <Card>
           <Card.Body>
-            <Card.Title>Inicia sesion</Card.Title>
+            <Card.Title> <i class="bi bi-person"></i> Inicia sesion</Card.Title>
             <Form onSubmit={handleSubmit}>
               <div>
                 <Form.Label>Correo electrónico:</Form.Label>
@@ -59,7 +53,7 @@ const InicioSesion = () => {
               <Button
                 href="/recover_password"
                 className="position-absolute buttom-0 end-0 mt-3 m-3"
-                variant="outline-primary"
+                variant="outline-warning"
               >
                 Olvide mi contaseña
               </Button>

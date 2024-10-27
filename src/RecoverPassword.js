@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Button, Card, Container, Form , Navbar, Nav} from 'react-bootstrap'
+import { Barra } from './Navbar';
 
 const RecoverPassword = () => {
     const[email,setEmail] = useState("");
@@ -9,15 +10,9 @@ const RecoverPassword = () => {
     }
   return (
 
-    <><Navbar bg="dark" variant="dark">
-          <Container>
-              <Navbar.Brand href="/">Cuestionarios</Navbar.Brand>
-              <Nav className="me-auto">
-                  <Nav.Link href="/inicio_sesion">Login</Nav.Link>
-                  <Nav.Link href="/sing_in">regist</Nav.Link>
-              </Nav>
-          </Container>
-      </Navbar>
+    <>
+        <Barra/>
+
       <Container className='mt-3'>
               <Card>
                   <Card.Body>

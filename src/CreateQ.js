@@ -1,82 +1,170 @@
 import React, { useState } from "react";
-import { Card, Container, Form, Button } from 'react-bootstrap';
-import { AnswerQuestionnarie } from "./components/AnwerQuestionnarie";
+import { Card, Container, Form, Button, InputGroup } from 'react-bootstrap';
+import { AnswerQuestionnaire } from "./components/AnwerQuestionnaire";
+import { Barra } from "./Navbar";
 
 
 const CreateQ = () => {
 
+  const[createQ,setCreateQ]= useState({
+    titulo:"",
+    descripcion:"",
+    preguntas:[
+      {
+        pregunta:"",
+        tipo:"",
+        opciones:[""]
+      },
+    ],
+    obligatoria:false
+  });
+
+  
+  const onChangeTitle =(e)=>{
+    e.preventDefault();
+    const data = { ...createQ};
+    data.titulo= e.target.value;
+    setCreateQ(data)
+  };
+
+  const onChangeDesc = (e)=>{
+    e.preventDefault();
+    const data = { ...createQ};
+    data.descripcion= e.target.value;
+    setCreateQ(data)
+  }
+
+  const onChangePregunta = (e,pIndex) => {
+    e.preventDefault()
+    const data = {...createQ};
+    data.preguntas[pIndex].pregunta= e.target.value;
+    setCreateQ(data);
+  }
+
+  const onChangeTipo = (e,pIndex)=> {
+    const data = {...createQ}
+    data.preguntas[pIndex].tipo= e.target.value;
+    setCreateQ(data);
+  }
+
+  const nuevaPregunta = ()=>{
+    const data = {...createQ};
+    const nuevaPregunta = {
+      pregunta:"",
+      tipo: "",
+      opciones:[""]
+    }
+    data.preguntas.push(nuevaPregunta);
+    setCreateQ(data)
+  }
+
+  const nuevaOpcion= (pIndex)=>{
+    const data = {...createQ};
+    data.preguntas[pIndex].opciones.push("")
+    setCreateQ(data)
+  }
+
+
+  const onChangeOption= (e,pIndex,oIndex)=>{
+    e.preventDefault();
+    const data = {...createQ};
+    data.preguntas[pIndex].opciones[oIndex] = e.target.value;
+    setCreateQ(data)
+  }
+
+  const borrarPregunta=(pIndex)=>{
+    const data = {...createQ};
+    const borrarQ = data.preguntas.filter((_, index) => index !== pIndex);
+    data.preguntas = borrarQ
+    setCreateQ(data)
+  }
+  const borrarOpcion= (pIndex,oIndex)=>{
+    const data = {...createQ};
+    const borrarO= data.preguntas[pIndex].opciones.filter((_, index)=> index !== oIndex)
+    data.preguntas[pIndex].opciones= borrarO;
+    setCreateQ(data)
+  }
+
   return (
-    <Container>
-      <Card className="mt-4">
+    <><Barra /><Container>
+      <Card className="mt-4 mb-4">
         <Card.Body>
-          <Card.Title className="text-center"></Card.Title>
-          <Form.Control 
-            placeholder="Ingresa título del cuestionario" 
-            name="title" 
-
-          />
+          <Card.Title className="text-center">{createQ.titulo}</Card.Title>
+          <Form.Control
+            placeholder="Ingresa título del cuestionario"
+            name="titulo"
+            value={createQ.titulo}
+            onChange={onChangeTitle} />
           <Card.Text className="mt-3 text-center"></Card.Text>
-          <Form.Control 
-            placeholder="Ingresa descripción del cuestionario" 
-            name="desc" 
-
-          />
+          <Form.Control
+            placeholder="Ingresa descripción del cuestionario"
+            name="desc"
+            value={createQ.descripcion}
+            onChange={onChangeDesc} />
         </Card.Body>
       </Card>
 
-
-        <Card className="mt-4" >
+      {createQ.preguntas.map((pregunta, pIndex) => (
+        <Card className="mt-4" key={pIndex}>
           <Card.Body>
-            <Form.Control 
-              placeholder="Ingresa tu pregunta" 
-              name="pregunta" 
-
-            />
-            <Form.Select 
-              style={{ width: "25%" }} 
-              className="mt-3" 
+            <Form.Control
+              placeholder="Ingresa tu pregunta"
+              name="pregunta"
+              value={pregunta.pregunta}
+              onChange={(e) => onChangePregunta(e, pIndex)} />
+            <Form.Select
+              style={{ width: "25%" }}
+              className="mt-3"
               aria-label="Default select example"
+              value={pregunta.tipo}
+              onChange={(e) => onChangeTipo(e, pIndex)}
             >
-              <option value="">Selecciona el tipo de pregunta</option>
-              <option value="checkbox">Opción múltiple</option>
-              <option value="radio">Casillas de verificación</option>
+              <option value="">Tipo de pregunta </option>
+              <option value="radio">Opción múltiple</option>
+              <option value="checkbox">Casillas de verificación</option>
               <option value="text">Pregunta Abierta</option>
               <option value="select">Selecciona</option>
             </Form.Select>
-            
+            <h5 className="mt-3"><i class="bi bi-ui-radios"></i> Opciones</h5>
+
+
             <div className="mt-3">
-
-                <div  className="d-flex align-items-center">
-                  <Form.Control 
-                    style={{ width: "70%" }} 
-
-
-                  />
-                  <Button variant="danger" className="mt-2" >Eliminar</Button>
-
+              {pregunta.opciones.map((opcion, oIndex) => (
+                <div key={oIndex} className="d-flex align-items-center">
+                  <InputGroup className="mt-2">
+                    <Form.Control
+                      style={{ width: "50%" }}
+                      placeholder={`Opción ${oIndex + 1}`}
+                      value={opcion}
+                      onChange={(e) => onChangeOption(e, pIndex, oIndex)}
+                      aria-describedby="basic-addon2" />
+                    <Button variant="outline-danger" id="button-addon2" className="mt-2" onClick={() => borrarOpcion(pIndex, oIndex)}><i class="bi bi-trash"></i> Eliminar </Button>
+                  </InputGroup>
                 </div>
+              ))}
 
-              <Button >Agregar Opción</Button>
+              <Button variant="outline-info" onClick={() => nuevaOpcion(pIndex)} className="mt-2"><i class="bi bi-plus-square"></i> Agregar</Button>
             </div>
 
-            <Form.Check 
+            <Form.Check
               className="align-items-end mt-2"
               type="switch"
               id="custom-switch"
-              label="Pregunta Obligatoria"
+              label="Pregunta Obligatoria" />
 
-            />
-
-            <Button variant="danger" className="mt-2" >Eliminar Pregunta</Button>
+            <Button variant="outline-danger" className="mt-2" onClick={() => borrarPregunta(pIndex)}><i class="bi bi-trash"></i> Eliminar Pregunta</Button>
           </Card.Body>
         </Card>
+      ))}
 
+      <div className="d-grid gap-2">
+        <Button className="mt-4 " onClick={nuevaPregunta} variant="outline-success"> <i class="bi bi-plus-square"></i> Nueva Pregunta</Button>
+      </div>
 
-      <Button className="mt-4" >Nueva Pregunta</Button>
 
       <h3 className="mt-4">Vista Previa</h3>
-      <AnswerQuestionnarie  />
-    </Container>
+      <AnswerQuestionnaire questionnaire={createQ} />
+    </Container></>
     
   );
 };
