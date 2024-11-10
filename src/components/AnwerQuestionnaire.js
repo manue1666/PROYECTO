@@ -1,10 +1,12 @@
 import React, { useState } from "react";
-import { Card, Container, Form } from "react-bootstrap";
+import { Card, Container, Form, Alert, Button } from "react-bootstrap";
 
 export const AnswerQuestionnaire = ({ questionnaire }) => {
   const [respuestas, setRespuestas] = useState(
     questionnaire.preguntas.map(() => "")
   );
+
+  const [errors, setErrors] = useState({});
 
   const onChangeAnswer = (index, value) => {
     const nuevasRespuestas = [...respuestas];
@@ -13,6 +15,30 @@ export const AnswerQuestionnaire = ({ questionnaire }) => {
   };
 
    //Edwin desmadre
+   const validate = () => {
+    const newErrors = {};
+    
+    questionnaire.preguntas.forEach((pregunta, index ) => {
+      if (pregunta.obligatoria && !respuestas[index]) {
+        newErrors[index] = "Esta pregunta es obligatoria.";
+      }
+    
+    });
+
+   setErrors(newErrors);
+   console.log(newErrors);
+
+   return Object.keys(newErrors).length === 0;
+  
+  };
+  const handleSubmit= (e) => {
+    e.preventDefault();
+
+    if (validate()) {
+      alert("El formulario se envio correctamente")
+    }
+
+  };
 
 
   return (
@@ -22,6 +48,7 @@ export const AnswerQuestionnaire = ({ questionnaire }) => {
           <Card.Title>{questionnaire.titulo}</Card.Title>
           <Card.Text>{questionnaire.descripcion}</Card.Text>
           <hr />
+          <Form onSubmit={handleSubmit}>
           {questionnaire.preguntas.map((pregunta, pIndex) => (
             <Form.Group key={pIndex}>
               <Form.Label>{pregunta.pregunta}</Form.Label>
@@ -54,8 +81,15 @@ export const AnswerQuestionnaire = ({ questionnaire }) => {
                   ))}
                 </Form.Select>
               ) : null}
+              {errors[pIndex] && (
+                <Alert variant="danger" className="mt-3">
+                  {errors[pIndex]}
+                </Alert>
+              )}
             </Form.Group>
           ))}
+          <Button type="submit" variant="primary">enviar</Button>
+          </Form>
         </Card.Body>
       </Card>
     </Container>
